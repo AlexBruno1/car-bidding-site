@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { createAuth } from "@/modules/identity/auth";
-import { signUpSchema } from "@/modules/identity";
+import { PASSWORD_MIN_LENGTH, signUpSchema } from "@/modules/identity";
 import * as schema from "@/platform/db/schema";
 
 /**
@@ -20,7 +20,15 @@ async function main() {
     password: ADMIN_PASSWORD,
   });
   if (!input.success) {
-    throw new Error("Set ADMIN_EMAIL and ADMIN_PASSWORD (min 10 characters) in .env");
+    const problems = input.error.issues.map((issue) => {
+      if (issue.path[0] === "email") {
+        return ADMIN_EMAIL ? "ADMIN_EMAIL is not a valid email address" : "ADMIN_EMAIL is empty";
+      }
+      return ADMIN_PASSWORD
+        ? `ADMIN_PASSWORD has ${ADMIN_PASSWORD.length} characters, it needs at least ${PASSWORD_MIN_LENGTH}`
+        : "ADMIN_PASSWORD is empty";
+    });
+    throw new Error(`Check .env (and save the file):\n  - ${problems.join("\n  - ")}`);
   }
 
   const client = postgres(DATABASE_URL, { max: 1 });
