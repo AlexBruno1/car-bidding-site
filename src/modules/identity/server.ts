@@ -2,7 +2,6 @@ import "server-only";
 import { cache } from "react";
 import { headers } from "next/headers";
 import { nextCookies } from "better-auth/next-js";
-import { APIError } from "better-auth/api";
 import { getDb } from "@/platform/db";
 import { getEnv } from "@/platform/env";
 import { getEventBus } from "@/platform/events";
@@ -78,12 +77,24 @@ export async function requirePermission<P extends Permission>(
 
 export type AuthFailure = "invalid_credentials" | "email_taken" | "rate_limited" | "unknown";
 
+/**
+ * Recognised by shape, not with `instanceof`: the dev bundler can load the
+ * auth library's error class twice, and then `instanceof` is false for an
+ * error that is in fact an API error.
+ */
+function asApiError(error: unknown): { status: number; code: string } | null {
+  if (!(error instanceof Error) || error.name !== "APIError") return null;
+  const { statusCode, body } = error as { statusCode?: unknown; body?: { code?: unknown } };
+  if (typeof statusCode !== "number") return null;
+  return { status: statusCode, code: typeof body?.code === "string" ? body.code : "" };
+}
+
 function toAuthFailure(error: unknown): AuthFailure {
-  if (!(error instanceof APIError)) throw error;
-  if (error.statusCode === 429) return "rate_limited";
-  const code = (error.body as { code?: string } | undefined)?.code ?? "";
-  if (code.startsWith("USER_ALREADY_EXISTS")) return "email_taken";
-  if (error.statusCode === 401 || code.startsWith("INVALID_")) return "invalid_credentials";
+  const apiError = asApiError(error);
+  if (!apiError) throw error;
+  if (apiError.status === 429) return "rate_limited";
+  if (apiError.code.startsWith("USER_ALREADY_EXISTS")) return "email_taken";
+  if (apiError.status === 401 || apiError.code.startsWith("INVALID_")) return "invalid_credentials";
   return "unknown";
 }
 
