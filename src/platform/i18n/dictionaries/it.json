@@ -1,0 +1,60 @@
+{
+  "site": {
+    "name": "Car Bidding",
+    "tagline": "Aste online per auto da appassionati, classiche e moderne.",
+    "description": "La piattaforma italiana di aste online per auto d'epoca, youngtimer e sportive moderne."
+  },
+  "nav": {
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "signOut": "Esci",
+    "account": "Il mio account",
+    "admin": "Amministrazione"
+  },
+  "home": {
+    "heading": "Le auto che meritano un'asta",
+    "body": "Ogni annuncio è verificato dalla redazione prima di andare online. Le prime aste arrivano presto.",
+    "cta": "Crea un account"
+  },
+  "auth": {
+    "signInTitle": "Accedi",
+    "signUpTitle": "Crea un account",
+    "name": "Nome e cognome",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "Almeno {min} caratteri.",
+    "submitSignIn": "Accedi",
+    "submitSignUp": "Registrati",
+    "pending": "Attendere…",
+    "noAccount": "Non hai un account?",
+    "haveAccount": "Hai già un account?",
+    "errors": {
+      "invalid_input": "Controlla i campi evidenziati.",
+      "invalid_credentials": "Email o password non corretti.",
+      "email_taken": "Non è stato possibile completare la registrazione con questi dati.",
+      "rate_limited": "Troppi tentativi. Riprova tra qualche minuto.",
+      "unknown": "Si è verificato un errore. Riprova."
+    },
+    "fieldErrors": {
+      "name": "Inserisci nome e cognome.",
+      "email": "Inserisci un indirizzo email valido.",
+      "password": "La password deve avere almeno {min} caratteri."
+    }
+  },
+  "account": {
+    "title": "Il mio account",
+    "role": "Ruolo",
+    "roles": {
+      "member": "Utente",
+      "admin": "Amministratore"
+    }
+  },
+  "admin": {
+    "title": "Amministrazione",
+    "body": "La coda delle proposte da revisionare comparirà qui."
+  },
+  "errors": {
+    "notFoundTitle": "Pagina non trovata",
+    "backHome": "Torna alla home"
+  }
+}

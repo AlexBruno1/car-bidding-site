@@ -1,0 +1,60 @@
+{
+  "site": {
+    "name": "Car Bidding",
+    "tagline": "Online auctions for enthusiast cars, classic and modern.",
+    "description": "The Italian online auction platform for classic cars, youngtimers and modern sports cars."
+  },
+  "nav": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out",
+    "account": "My account",
+    "admin": "Admin"
+  },
+  "home": {
+    "heading": "Cars that deserve an auction",
+    "body": "Every listing is reviewed by our editors before it goes live. The first auctions are coming soon.",
+    "cta": "Create an account"
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Create an account",
+    "name": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least {min} characters.",
+    "submitSignIn": "Sign in",
+    "submitSignUp": "Sign up",
+    "pending": "Please wait…",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "errors": {
+      "invalid_input": "Check the highlighted fields.",
+      "invalid_credentials": "Incorrect email or password.",
+      "email_taken": "We couldn't complete the sign-up with these details.",
+      "rate_limited": "Too many attempts. Try again in a few minutes.",
+      "unknown": "Something went wrong. Please try again."
+    },
+    "fieldErrors": {
+      "name": "Enter your full name.",
+      "email": "Enter a valid email address.",
+      "password": "The password must be at least {min} characters."
+    }
+  },
+  "account": {
+    "title": "My account",
+    "role": "Role",
+    "roles": {
+      "member": "Member",
+      "admin": "Administrator"
+    }
+  },
+  "admin": {
+    "title": "Admin",
+    "body": "The queue of submissions to review will appear here."
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "backHome": "Back to home"
+  }
+}
