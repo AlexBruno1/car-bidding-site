@@ -18,7 +18,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx --env-file-if-exists=.env scripts/migrate.ts",
     "db:seed": "tsx --env-file-if-exists=.env scripts/seed-admin.ts",
-    "setup": "node scripts/setup.mjs"
+    "bootstrap": "node scripts/bootstrap.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.20",

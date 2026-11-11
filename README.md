@@ -12,7 +12,7 @@ Servono Node.js 22+, [pnpm](https://pnpm.io) e Docker.
 
 ```bash
 pnpm install
-pnpm setup      # crea .env con un segreto generato, avvia PostgreSQL, applica le migrazioni
+pnpm bootstrap      # crea .env con un segreto generato, avvia PostgreSQL, applica le migrazioni
 pnpm dev        # http://localhost:3000
 ```
 
