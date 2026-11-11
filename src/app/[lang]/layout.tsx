@@ -18,7 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const locale = await getLocale();
   return (
-    <html lang={locale}>
+    // Browser extensions often add attributes to <html> before React loads.
+    // This silences the resulting warning for this element's own attributes
+    // only; mismatches anywhere inside it are still reported.
+    <html lang={locale} suppressHydrationWarning>
       <body className="min-h-screen bg-white font-sans text-neutral-900 antialiased">
         <SiteHeader />
         <main className="mx-auto w-full max-w-5xl px-4 py-10">{children}</main>
